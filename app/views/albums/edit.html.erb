@@ -1,0 +1,9 @@
+<h1>Edit Album</h1>
+<%= render 'shared/errors' %>
+<%= render 'form',
+           action: album_url(@album),
+           method: 'patch',
+           submit_text: 'Update album',
+           album: @album,
+           bands: @bands,
+           band_id: @band_id %>

@@ -1,0 +1,44 @@
+<form action="<%= action %>" method="post">
+  <%= token_tag nil %>
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <label>Title
+    <input type="text" name="album[title]" value="<%= album.title %>">
+  </labeL>
+
+  <br>
+
+  <label>
+    <input
+          type="radio"
+          name="album[recording_type]"
+          value="live"
+          <%= 'checked' if album.recording_type == 'live' %> >
+  </label>Live
+  <br>
+  <label>
+    <input
+          type="radio"
+          name="album[recording_type]"
+          value="studio"
+          <%= 'checked' if album.recording_type == 'studio' %> >
+  </label>Studio
+
+  <br>
+
+  <label>Band
+    <select name="album[band_id]">
+      <% bands.each do |band| %>
+        <option
+            value='<%= band.id %>'
+            <%= 'selected' if band.id == band_id %>>
+          <%= band.name %>
+        </option>
+      <% end %>
+    </select>
+  </label>
+
+  <br>
+
+  <input type="submit" name="name" value="<%= submit_text %>">
+</form>

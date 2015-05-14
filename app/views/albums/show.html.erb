@@ -1,0 +1,4 @@
+<h1><%= @album.title %> by <%= @album.band.name %> (<%= @album.recording_type %>)</h1>
+<%= link_to 'Edit album', edit_album_url %>
+<%= link_to 'Band', band_url(@album.band_id) %>
+<%= button_to 'Delete album', album_url, method: :delete %>
