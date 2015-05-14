@@ -1,0 +1,7 @@
+<h1>Edit Band</h1>
+<%= render 'shared/errors' %>
+<%= render('form',
+           action: band_url(@band),
+           method: 'patch',
+           submit_text: 'Save changes',
+           band: @band) %>

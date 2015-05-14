@@ -1,0 +1,12 @@
+<h1> <%= @band.name%></h1>
+<%= link_to 'Index', bands_url %>
+<%= link_to 'Edit band', edit_band_url %>
+<%= button_to 'Delete band', band_url, method: 'delete' %>
+<ul>
+  <% @band.albums.each do |album| %>
+    <li>
+      <%= link_to album.title, album_url(album) %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'New Album', new_band_album_url(band_id: params[:id]) %>
