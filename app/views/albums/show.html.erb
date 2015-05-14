@@ -1,4 +1,16 @@
 <h1><%= @album.title %> by <%= @album.band.name %> (<%= @album.recording_type %>)</h1>
-<%= link_to 'Edit album', edit_album_url %>
-<%= link_to 'Band', band_url(@album.band_id) %>
-<%= button_to 'Delete album', album_url, method: :delete %>
+<%= link_to 'Up (band)', band_url(@album.band_id) %> |
+<%= link_to 'Edit', edit_album_url %> |
+<%= link_to 'New track', new_album_track_url(@album.id) %>
+<%= button_to 'Delete', album_url, method: :delete %>
+
+
+<br>
+
+<ol>
+  <% @album.tracks.each do |track| %>
+    <li>
+      <%= link_to track.title, track_url(track) %>
+    </li>
+  <% end %>
+</ol>

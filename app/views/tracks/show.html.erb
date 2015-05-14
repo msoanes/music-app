@@ -1,0 +1,8 @@
+<h1> <%= @track.title %></h1>
+<%= link_to 'Up (album)', album_url(@track.album_id) %> |
+<%= link_to 'Edit', edit_track_url %>
+<%= button_to 'Delete', track_url, method: 'delete' %>
+
+<pre>
+<%= @track.lyrics %>
+</pre>

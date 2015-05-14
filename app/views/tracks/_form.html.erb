@@ -1,0 +1,50 @@
+<form action="<%= action %>" method="post">
+  <%= token_tag nil %>
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <label>Title
+    <input type="text" name="track[title]" value="<%= track.title %>">
+  </labeL>
+
+  <br>
+
+  <label>
+    <input
+          type="radio"
+          name="track[is_bonus]"
+          value="T"
+          <%= 'checked' if track.is_bonus == 'T' %> >
+  Bonus</label>
+  <br>
+  <label>
+    <input
+          type="radio"
+          name="track[is_bonus]"
+          value="F"
+          <%= 'checked' if track.is_bonus == 'F' %> >
+  Regular</label>
+
+  <br>
+
+  <label>Album
+    <select name="track[album_id]">
+      <% albums.each do |album| %>
+        <option
+            value='<%= album.id %>'
+            <%= 'selected' if album.id == track.album_id %>>
+          <%= album.title %>
+        </option>
+      <% end %>
+    </select>
+  </label>
+  <br>
+  <label>
+    Lyrics
+    <br>
+    <textarea name="track[lyrics]"><%= track.lyrics %></textarea>
+  </label>
+
+  <br>
+
+  <input type="submit" name="name" value="<%= submit_text %>">
+</form>

@@ -1,0 +1,8 @@
+<h1>Edit Track</h1>
+<%= render 'shared/errors' %>
+<%= render 'form',
+           action: track_url(@track),
+           method: 'patch',
+           track: @track,
+           albums: @albums,
+           submit_text: 'Update track' %>

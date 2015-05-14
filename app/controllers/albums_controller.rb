@@ -1,18 +1,18 @@
 class AlbumsController < ApplicationController
+  before_action :require_login
+
   def show
     @album = Album.find(params[:id])
   end
 
   def new
     @bands = Band.all
-    @album = Album.new
-    @band_id = params[:band_id].to_i
+    @album = Album.new(band_id: params[:band_id].to_i)
   end
 
   def create
     @bands = Band.all
     @album = Album.new(album_params)
-    @band_id = @album.band_id
     if @album.save
       flash[:success] = "The kickass band has a kickass album!"
       redirect_to album_url(@album)
@@ -25,14 +25,11 @@ class AlbumsController < ApplicationController
   def edit
     @bands = Band.all
     @album = Album.find(params[:id])
-    @band_id = @album.band_id
-    render :edit
   end
 
   def update
     @bands = Band.all
     @album = Album.find(params[:id])
-    @band_id = @album.band_id
     if @album.update(album_params)
       flash[:success] = "Did that album just get a little more awesome?"
       redirect_to album_url(@album)
