@@ -1,5 +1,5 @@
 <form action="<%= action %>" method="post">
-  <%= token_tag nil %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="<%= method %>">
 
   <label>Title
@@ -14,7 +14,8 @@
           name="album[recording_type]"
           value="live"
           <%= 'checked' if album.recording_type == 'live' %> >
-  </label>Live
+          Live
+  </label>
   <br>
   <label>
     <input
@@ -22,7 +23,8 @@
           name="album[recording_type]"
           value="studio"
           <%= 'checked' if album.recording_type == 'studio' %> >
-  </label>Studio
+          Studio
+    </label>
 
   <br>
 

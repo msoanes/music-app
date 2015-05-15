@@ -1,8 +1,14 @@
-<h1> <%= @track.title %></h1>
-<%= link_to 'Up (album)', album_url(@track.album_id) %> |
+<h1> <%= @track.title %> <%= '(bonus)' if @track.bonus? %></h1>
+<%= link_to 'Back to album', album_url(@track.album_id) %> |
 <%= link_to 'Edit', edit_track_url %>
 <%= button_to 'Delete', track_url, method: 'delete' %>
 
 <pre>
-<%= @track.lyrics %>
+<%= h(ugly_lyrics(@track.lyrics)) %>
 </pre>
+
+<%= render 'notes/form', track: @track %>
+<hr>
+<% @track.notes.includes(:user).each do |note| %>
+  <%= render 'notes/note', note: note %>
+<% end %>

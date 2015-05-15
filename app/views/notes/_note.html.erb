@@ -1,0 +1,10 @@
+<p>
+  email: <%= note.user.email %>
+</p>
+<pre>
+  <%= note.notes %>
+</pre>
+<% if note.user == current_user %>
+  <%= button_to 'Delete note', note_url(note), method: 'delete' %>
+<% end %>
+<hr>

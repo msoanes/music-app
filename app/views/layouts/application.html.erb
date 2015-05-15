@@ -13,6 +13,15 @@
     <%= link_to 'Log in', new_session_url %> |
     <%= link_to 'Sign up', new_user_url %>
   <% end %>
+  <% flash.each do |type, msgs| %>
+    <% next if type == :error %>
+    <% list = msgs.is_a?(Array) ? msgs : [msgs] %>
+    <% list.each do |msg| %>
+      <li class="<%= type %>">
+        <%= msg %>
+      </li>
+    <% end %>
+  <% end %>
 
 <%= yield %>
 
